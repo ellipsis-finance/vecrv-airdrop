@@ -56,6 +56,7 @@ def main():
     total_distribution = (250000000*10**18)//52
     total_vecrv = sum(data.values())
     balances = {k: int(Fraction(v*total_distribution, total_vecrv)) for k, v in data.items()}
+    balances = {k: v for k, v in balances.items() if v}
 
     # handle any rounding errors
     addresses = deque(balances)
@@ -65,7 +66,7 @@ def main():
 
     assert sum(balances.values()) == total_distribution
 
-    elements = [(index, account, amount) for index, (account, amount) in enumerate(balances.items())]
+    elements = [(index, account, balances[account]) for index, account in enumerate(sorted(balances))]
     nodes = [encode_hex(encode_abi_packed(['uint', 'address', 'uint'], el)) for el in elements]
     tree = MerkleTree(nodes)
     distribution = {
