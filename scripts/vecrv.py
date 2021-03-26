@@ -9,6 +9,7 @@ snapshot_block = 12059299
 # make sure all addresses are lower case, not checksummed
 replacements = {
     "0xf147b8125d2ef93fb6965db97d6746952a133934": "0x2d407ddb06311396fe14d4b49da5f0471447d45c",  # yearn.finance
+    "0x52f541764e6e90eebc5c21ff570de0e2d63766b6": "0xb36a0671b3d49587236d7833b01e79798175875f" # stakedao
 }
 
 
