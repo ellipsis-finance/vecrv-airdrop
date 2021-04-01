@@ -154,7 +154,7 @@ def main():
     with address_json.open('w') as fp:
         json.dump({'addresses': addresses, 'latest': height}, fp)
 
-    snapshot_time = int(((time.time() // 604800)-1) * 604800)
+    snapshot_time = int((time.time() // 604800) * 604800)
     snapshot_block = get_block_at_timestamp(snapshot_time)
     balances = get_vecrv_balances(addresses, snapshot_block)
     distribution = get_proof(balances, snapshot_block)
